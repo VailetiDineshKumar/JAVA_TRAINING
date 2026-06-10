@@ -17,6 +17,7 @@ public class linkedlist {
         list.addLast("last_element");
         list.addFirst("First");
         list.add(1,"second");
+        list.set(2,"third");
         System.out.println(list);
     }
 }
