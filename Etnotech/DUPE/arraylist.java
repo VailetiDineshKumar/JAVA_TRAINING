@@ -7,10 +7,12 @@ public static void main(String[] args) {
         list.add("bus");
 
         System.out.println("ArrayList: " + list);
-        list.remove("bike");
-        System.out.println("After removing 'bike': " + list);
-        System.out.println("Size of ArrayList: " + list.size());
-        System.out.println("Does the ArrayList contain 'car'? " + list.contains("car"));
-        System.out.println("first index element: " + list.get(0));
+        // list.remove("bike");
+        list.add(1,"train");
+        // System.out.println("After removing 'bike': " + list);
+        // System.out.println("Size of ArrayList: " + list.size());
+        // System.out.println("Does the ArrayList contain 'car'? " + list.contains("car"));
+        // System.out.println("first index element: " + list.get(0));
+        System.out.println(list);
     }
 }
