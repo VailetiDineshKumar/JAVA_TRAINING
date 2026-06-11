@@ -21,9 +21,9 @@ public class ExampleCollection {
         System.out.println("The size of the hashset is: " + hashset.size());
         System.out.println("==============TreeSet==============");
         TreeSet<Integer> treeset = new TreeSet<>();
-        treeset.add(201);
-        treeset.add(202);
-        treeset.add(203);
+        for(int num: hashset) {
+            treeset.add(num+100);
+        }
         System.out.println("TreeSet is for maintaining unique elements and sorts them in natural order.");
         System.out.println(treeset.contains(202));
         System.out.println("The treeset numbers are: " + treeset);
@@ -36,6 +36,9 @@ public class ExampleCollection {
         System.out.println(linkedhashset.contains(302));
         System.out.println("The linkedhashset numbers are: " + linkedhashset);
         System.out.println("The size of the linkedhashset is: " + linkedhashset.size());
+        NavigableSet<Integer> navigableset = new TreeSet<>(linkedhashset);
+        System.out.println("NavigableSet is an interface that extends SortedSet and provides navigation methods for traversing the set in both directions.");
+        System.out.println("The navigableset numbers are: " + navigableset);
          
     }
 }
