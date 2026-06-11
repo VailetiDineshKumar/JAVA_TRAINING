@@ -28,6 +28,7 @@ public class ExampleCollection {
         System.out.println(treeset.contains(202));
         System.out.println("The treeset numbers are: " + treeset);
         System.out.println("The size of the treeset is: " + treeset.size());
+        System.out.println("==============LinkedHashSet==============");
         LinkedHashSet<Integer> linkedhashset = new LinkedHashSet<>();
         linkedhashset.add(301); 
         linkedhashset.add(302);
@@ -36,9 +37,15 @@ public class ExampleCollection {
         System.out.println(linkedhashset.contains(302));
         System.out.println("The linkedhashset numbers are: " + linkedhashset);
         System.out.println("The size of the linkedhashset is: " + linkedhashset.size());
+        System.out.println("==============NavigableSet==============");
         NavigableSet<Integer> navigableset = new TreeSet<>(linkedhashset);
         System.out.println("NavigableSet is an interface that extends SortedSet and provides navigation methods for traversing the set in both directions.");
         System.out.println("The navigableset numbers are: " + navigableset);
+        System.out.println("The size of the navigableset is: " + navigableset.size());
+        System.out.println("The first element in the navigableset is: " + navigableset.first());
+        System.out.println("The last element in the navigableset is: " + navigableset.last());
+        System.out.println("The lower element than 302 in the navigableset is: " + navigableset.lower(302));
+        System.out.println("The higher element than 302 in the navigableset is: " + navigableset.higher(302));
          
     }
 }
