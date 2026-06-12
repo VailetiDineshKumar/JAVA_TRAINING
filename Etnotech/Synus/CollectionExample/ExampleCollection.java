@@ -30,9 +30,9 @@ public class ExampleCollection {
         System.out.println("The size of the treeset is: " + treeset.size());
         System.out.println("==============LinkedHashSet==============");
         LinkedHashSet<Integer> linkedhashset = new LinkedHashSet<>();
-        linkedhashset.add(301); 
-        linkedhashset.add(302);
-        linkedhashset.add(303);
+        for(int num: hashset) {
+            linkedhashset.add(num+200);
+        }
         System.out.println("LinkedHashSet is for maintaining unique elements and preserves the insertion order.");
         System.out.println(linkedhashset.contains(302));
         System.out.println("The linkedhashset numbers are: " + linkedhashset);
@@ -46,6 +46,5 @@ public class ExampleCollection {
         System.out.println("The last element in the navigableset is: " + navigableset.last());
         System.out.println("The lower element than 302 in the navigableset is: " + navigableset.lower(302));
         System.out.println("The higher element than 302 in the navigableset is: " + navigableset.higher(302));
-         
     }
 }
