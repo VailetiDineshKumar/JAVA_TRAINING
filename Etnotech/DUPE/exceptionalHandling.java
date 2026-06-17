@@ -1,3 +1,4 @@
+package DUPE;
 public class exceptionalHandling {
     public static void main(String[] args) {
         try {

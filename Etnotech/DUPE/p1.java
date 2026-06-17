@@ -1,3 +1,4 @@
+package DUPE;
 import java.util.*;
 public class p1{
     static  int OperationsBinaryString(String str)

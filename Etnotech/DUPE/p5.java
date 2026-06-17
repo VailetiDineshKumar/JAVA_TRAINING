@@ -1,4 +1,5 @@
-import java.util.*;
+package DUPE;import java.util.*;
+
 
 class Main{
     public static void main(String[] args) {

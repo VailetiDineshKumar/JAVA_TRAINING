@@ -1,3 +1,5 @@
+
+package DUPE;
 import java.util.*;
 
 public class LinkedListsExample {

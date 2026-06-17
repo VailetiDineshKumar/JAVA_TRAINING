@@ -1,3 +1,4 @@
+package DUPE;
 class p3 {
     public static int earliestFinishTime(int[] landStartTime, int[] landDuration, int[] waterStartTime, int[] waterDuration) {
         int sum=0;

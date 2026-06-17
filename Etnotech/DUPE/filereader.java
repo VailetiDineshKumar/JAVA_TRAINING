@@ -1,3 +1,4 @@
+package DUPE;
 public class filereader {
     public static void main(String[] args) {
         try {

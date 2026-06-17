@@ -12,5 +12,8 @@ public class hashmap1 {
         System.out.println(hash+" "+ hash.containsKey("tree")+" "+hash.containsValue("Dragon"));
         System.out.println(hash.values());
         System.out.println(hash.keySet());   
+        for(Map.Entry<String,String> entry: hash.entrySet()){
+            System.out.println(entry.getKey()+" "+entry.getValue());
+        }
     }
 }
