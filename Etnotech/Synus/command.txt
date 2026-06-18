@@ -1,0 +1,296 @@
+
+mysql> create a table for sales-1) total sales amount
+    -> 2) highest sale
+    -> 3)
+    -> lowest sale
+    -> 4) how many sales happend
+    -> 5) avg sale amount
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'a table for sales-1) total sales amount
+2) highest sale
+3)
+lowest sale
+4) how ma' at line 1
+mysql> create table sales(S.no int auto_increment,amount int, sale_type varchar(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.no int auto_increment,amount int, sale_type varchar(10))' at line 1
+mysql> create table sales(S.no int,amount int, sale_type varchar(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.no int,amount int, sale_type varchar(10))' at line 1
+mysql> create table sales(S.no int,amount int, sale_type varchar(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.no int,amount int, sale_type varchar(10))' at line 1
+mysql> create table sales(S_no int auto_increment,amount int, sale_type varchar(10));
+ERROR 1046 (3D000): No database selected
+mysql> use normal;
+Database changed
+mysql> create table sales(S_no int auto_increment,amount int, sale_type varchar(10));
+ERROR 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key
+mysql> create table sales(S_no int,amount int, sale_type varchar(10));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into sales values
+    -> (1,5000,"Clothes"),
+    -> (2,3200,"Electronic"),
+    -> (3,2230,"Accesory"),
+    -> (4,2400,"Clothes"),
+    -> (5,4230."food");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"food")' at line 6
+mysql> insert into sales values
+    -> (1,5000,"Clothes"),
+    -> (2,3200,"Electronic"),
+    -> (3,2230,"Accesory"),
+    -> (4,2400,"Clothes"),
+    -> (5,4230,"food");
+Query OK, 5 rows affected (0.03 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select *from sales;
++------+--------+------------+
+| S_no | amount | sale_type  |
++------+--------+------------+
+|    1 |   5000 | Clothes    |
+|    2 |   3200 | Electronic |
+|    3 |   2230 | Accesory   |
+|    4 |   2400 | Clothes    |
+|    5 |   4230 | food       |
++------+--------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select distinct(s_no) from sales;
++------+
+| s_no |
++------+
+|    1 |
+|    2 |
+|    3 |
+|    4 |
+|    5 |
++------+
+5 rows in set (0.00 sec)
+
+mysql> select count(s_no) from sales;
++-------------+
+| count(s_no) |
++-------------+
+|           5 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> select max(amount) from sales;
++-------------+
+| max(amount) |
++-------------+
+|        5000 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> select mix(amount) from sales;
+ERROR 1305 (42000): FUNCTION normal.mix does not exist
+mysql> select min(amount) from sales;
++-------------+
+| min(amount) |
++-------------+
+|        2230 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(amount) from sales;
++-------------+
+| avg(amount) |
++-------------+
+|   3412.0000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(amount) from sales;
++-------------+
+| sum(amount) |
++-------------+
+|       17060 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(S_no) as total_sales,max(amount) as highest_sale,min(amount) as minimum_sale,avg(amount) as Average_sales,sum(amount) as total_sales  from sales;
++-------------+--------------+--------------+---------------+-------------+
+| total_sales | highest_sale | minimum_sale | Average_sales | total_sales |
++-------------+--------------+--------------+---------------+-------------+
+|           5 |         5000 |         2230 |     3412.0000 |       17060 |
++-------------+--------------+--------------+---------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(S_no) as total_sales,max(amount) as highest_sale,min(amount) as minimum_sale,round(avg(amount),2) as Average_sales,sum(amount) as total_sales  from sales;
++-------------+--------------+--------------+---------------+-------------+
+| total_sales | highest_sale | minimum_sale | Average_sales | total_sales |
++-------------+--------------+--------------+---------------+-------------+
+|           5 |         5000 |         2230 |       3412.00 |       17060 |
++-------------+--------------+--------------+---------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select *avg() from sales;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'avg() from sales' at line 1
+mysql> select *avg from sales;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'avg from sales' at line 1
+mysql> select avg(amount) from sales group by sales_types;
+ERROR 1054 (42S22): Unknown column 'sales_types' in 'group statement'
+mysql> select avg(amount) from sales group by sales_type;
+ERROR 1054 (42S22): Unknown column 'sales_type' in 'group statement'
+mysql> select avg(amount) from sales group by sale_type;
++-------------+
+| avg(amount) |
++-------------+
+|   3700.0000 |
+|   3200.0000 |
+|   2230.0000 |
+|   4230.0000 |
++-------------+
+4 rows in set (0.02 sec)
+
+mysql> select sale_type,avg(amount) from sales group by sale_type;
++------------+-------------+
+| sale_type  | avg(amount) |
++------------+-------------+
+| Clothes    |   3700.0000 |
+| Electronic |   3200.0000 |
+| Accesory   |   2230.0000 |
+| food       |   4230.0000 |
++------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select sale_type, sum(amount) from sales group by sale_type having amount>3000;
+ERROR 1054 (42S22): Unknown column 'amount' in 'having clause'
+mysql> select sale_type, sum(amount) from sales group by sale_type having sum(amount)>3000;
++------------+-------------+
+| sale_type  | sum(amount) |
++------------+-------------+
+| Clothes    |        7400 |
+| Electronic |        3200 |
+| food       |        4230 |
++------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select sale_type, (amount) from sales group by sale_type having (amount)>3000;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'normal.sales.amount' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select sale_type, sum(amount) from sales group by sale_type having sum(amount)>3000;
++------------+-------------+
+| sale_type  | sum(amount) |
++------------+-------------+
+| Clothes    |        7400 |
+| Electronic |        3200 |
+| food       |        4230 |
++------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select sale_type, sum(amount) from sales group by sale_type with rollup;
++------------+-------------+
+| sale_type  | sum(amount) |
++------------+-------------+
+| Accesory   |        2230 |
+| Clothes    |        7400 |
+| Electronic |        3200 |
+| food       |        4230 |
+| NULL       |       17060 |
++------------+-------------+
+5 rows in set (0.02 sec)
+
+mysql> select sale_type from sales where amount > ( select avg(amount) from sales);
++-----------+
+| sale_type |
++-----------+
+| Clothes   |
+| food      |
++-----------+
+2 rows in set (0.02 sec)
+
+mysql> select sale_type,amount,avg(sum) from sales where amount > ( select avg(amount) from sales);
+ERROR 1054 (42S22): Unknown column 'sum' in 'field list'
+mysql> select sale_type,amount,avg(amount) from sales where amount > ( select avg(amount) from sales);
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'normal.sales.sale_type'; this is incompatible with sql_mode=only_full_group_by
+mysql> select sale_type,amount from sales where amount > ( select avg(amount) from sales);
++-----------+--------+
+| sale_type | amount |
++-----------+--------+
+| Clothes   |   5000 |
+| food      |   4230 |
++-----------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select *from sales where amount in (select amount from sales);
++------+--------+------------+
+| S_no | amount | sale_type  |
++------+--------+------------+
+|    1 |   5000 | Clothes    |
+|    2 |   3200 | Electronic |
+|    3 |   2230 | Accesory   |
+|    4 |   2400 | Clothes    |
+|    5 |   4230 | food       |
++------+--------+------------+
+5 rows in set (0.02 sec)
+
+mysql> select name from customer c where exists ( selecr 1 from transactions t where c.c_id= t.customer_id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selecr 1 from transactions t where c.c_id= t.customer_id)' at line 1
+mysql> select name from customer c where exists ( select 1 from transactions t where c.c_id= t.customer_id);
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select t_id from customer c where exists ( select 1 from transactions t where c.c_id= t.customer_id);
++------+
+| t_id |
++------+
+|    1 |
+|    2 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> select t_id from customer c where nnot exists ( select 1 from transactions t where c.c_id= t.customer_id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'exists ( select 1 from transactions t where c.c_id= t.customer_id)' at line 1
+mysql> select t_id from customer c where not exists ( select 1 from transactions t where c.c_id= t.customer_id);
+Empty set (0.00 sec)
+
+mysql> select t_id from customer c where exists ( select 1 from transactions t where c.c_id= t.customer_id);
++------+
+| t_id |
++------+
+|    1 |
+|    2 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_normal |
++------------------+
+| customer         |
+| sales            |
+| std              |
+| students         |
+| transaction      |
+| transactions     |
++------------------+
+6 rows in set (0.02 sec)
+
+mysql> select *from transaction;
++----------+--------+------------+-------------+
+| trans_id | name   | Amount     | customer_id |
++----------+--------+------------+-------------+
+|        1 | Dinesh | 1250.50000 |         101 |
+|        2 | Rahul  | 3499.75000 |         102 |
+|        3 | Priya  |  875.25000 |         103 |
+|        4 | Kiran  | 5600.00000 |         104 |
+|        5 | Anjali |  199.99000 |         105 |
+|        6 | Dinesh | 1250.50000 |         101 |
+|        7 | Rahul  | 3499.75000 |         102 |
+|        8 | Priya  |  875.25000 |         103 |
+|        9 | Kiran  | 5600.00000 |         104 |
+|       10 | Anjali |  199.99000 |         105 |
++----------+--------+------------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_normal |
++------------------+
+| customer         |
+| sales            |
+| std              |
+| students         |
+| transaction      |
+| transactions     |
++------------------+
+6 rows in set (0.00 sec)
