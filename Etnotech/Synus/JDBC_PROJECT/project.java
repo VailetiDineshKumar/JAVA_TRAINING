@@ -7,7 +7,7 @@ public class project {
     static final String URL =
             "jdbc:mysql://localhost:3306/student_db";
     static final String USER = "root";
-    static final String PASSWORD = "Chinnu@2006";
+    static final String PASSWORD = "*********";
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
