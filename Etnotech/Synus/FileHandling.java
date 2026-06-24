@@ -17,10 +17,10 @@ public class FileHandling{
             fr.close();
         }
         catch(FileNotFoundException e){
-            System.out.println("File Not Found"+e);
+            System.out.println("File Not Found"+e.getMessage());
         }
         catch(IOException e){
-            System.out.println("IO Execption"+e);
+            System.out.println("IO Execption"+e.getMessage());
         }
     }
 }
